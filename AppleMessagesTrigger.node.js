@@ -8,7 +8,6 @@ export class AppleMessagesTrigger {
     name: "appleMessagesTrigger",
     group: ["trigger"],
     version: 1,
-    icon: "file:logo.png",
     description: "Emits new Apple messages",
     defaults: {
       name: "Apple Messages Trigger",
