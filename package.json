@@ -1,0 +1,21 @@
+{
+  "name": "n8n-nodes-apple-messages",
+  "version": "0.1.0",
+  "description": "n8n trigger node for Apple Messages (SMS on macOS)",
+  "keywords": [
+    "n8n",
+    "node",
+    "sms",
+    "apple",
+    "macos"
+  ],
+  "main": "AppleMessagesTrigger.node.js",
+  "author": "Divy Srivastava <me@littledivy.com>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "n8n-nodes-apple-messages": "file:n8n-nodes-apple-messages-0.1.0.tgz"
+  }
+}
