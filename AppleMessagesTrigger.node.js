@@ -18,15 +18,6 @@ export class AppleMessagesTrigger {
     credentials: [],
     properties: [
       {
-        displayName: "Helper Path",
-        name: "helperPath",
-        type: "string",
-        default: new URL("./helper/sms_forwarder_mac", import.meta.url),
-        placeholder: "",
-        description: "Path to the helper binary",
-        required: false,
-      },
-      {
         displayName: "Activation Key",
         name: "activationKey",
         type: "string",
@@ -61,7 +52,7 @@ export class AppleMessagesTrigger {
   };
 
   async trigger() {
-    const helperPath = this.getNodeParameter("helperPath", "");
+    const helperPath = new URL("./helpers/sms_forwarder_mac", import.meta.url).pathname;
     const activationKey = (this.getNodeParameter("activationKey", "")).trim();
     const pollInterval = this.getNodeParameter("pollInterval", 5);
     const onlyIncoming = this.getNodeParameter("onlyIncoming", true);
@@ -90,8 +81,10 @@ export class AppleMessagesTrigger {
 
     const proc = spawn(helperPath, args, { stdio: ["ignore", "pipe", "pipe"] });
 
+		console.log(helperPath, args);
     proc.stdout.on("data", (data) => {
       const lines = data.toString().trim().split("\n");
+			console.log(lines);
       for (const line of lines) {
         try {
           const msg = JSON.parse(line);
